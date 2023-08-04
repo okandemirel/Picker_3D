@@ -1,45 +1,51 @@
-﻿//using Tabtale.TTPlugins;
-
-using _Modules.SaveModule.Scripts.Data;
-using Extensions;
-using Managers;
-using Runtime.Enums;
+using Enums;
 using Runtime.Signals;
-using Signals;
 using UnityEngine;
 
-public class GameManager : MonoSingleton<GameManager>
+namespace Managers
 {
-    #region Self Variables
-
-    #region Public Variables
-
-    public GameStates States;
-
-    #endregion
-    
-    #endregion
-
-    protected override void Awake()
+    public class GameManager : MonoBehaviour
     {
-        Application.targetFrameRate = 60;
-        //TTPCore.Setup();
-    }
+        #region Self Variables
 
-    private void OnEnable()
-    {
-        CoreGameSignals.Instance.onChangeGameStates += OnChangeGameState;
-    }
+        #region Serialized Variables
 
-    private void OnDisable()
-    {
-        CoreGameSignals.Instance.onChangeGameStates -= OnChangeGameState;
-    }
-    
-    private void OnChangeGameState(GameStates newState)
-    {
-        States = newState;
-    }
+        [SerializeField] private GameStates states;
 
-   
+        #endregion
+
+        #endregion
+
+
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+        }
+
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            CoreGameSignals.Instance.onChangeGameState += OnChangeGameState;
+        }
+
+        private void UnsubscribeEvents()
+        {
+            CoreGameSignals.Instance.onChangeGameState -= OnChangeGameState;
+        }
+
+        private void OnDisable()
+        {
+            UnsubscribeEvents();
+        }
+
+        //[Button("Change State")]
+        private void OnChangeGameState(GameStates state)
+        {
+            states = state;
+        }
+    }
 }

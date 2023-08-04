@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - StageArea
+  - PoolArea
+  - Collectable
+  - FinishArea
+  - MiniGameArea
   layers:
   - Default
   - TransparentFX

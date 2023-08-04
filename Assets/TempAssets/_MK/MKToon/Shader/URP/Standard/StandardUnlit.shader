@@ -101,7 +101,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" }
+			Tags { "LightMode" = "UniversalForward" }
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -124,11 +124,11 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#pragma vertex ForwardVert
 			#pragma fragment ForwardFrag
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
             #pragma multi_compile_fog
 			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
 			#pragma multi_compile __ DOTS_INSTANCING_ON
 
 			#define MK_URP
@@ -168,6 +168,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#pragma fragment MetaFrag
 			#pragma fragmentoption ARB_precision_hint_fastest
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma shader_feature_local __ _MK_ALBEDO_MAP
@@ -219,44 +220,6 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#define MK_STANDARD
 
             #include "../../Lib/DepthOnly/Setup.hlsl"
-            ENDHLSL
-        }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////
-		// Depth Normals
-		/////////////////////////////////////////////////////////////////////////////////////////////
-		Pass
-        {
-            Name "DepthNormals"
-            Tags { "LightMode" = "DepthNormals" }
-
-            ZWrite On
-            Cull [_RenderFace]
-
-            HLSLPROGRAM
-
-            #pragma prefer_hlslcc gles
-            #pragma exclude_renderers d3d11_9x
-            #pragma target 4.5
-
-            #pragma vertex DepthNormalsVert
-            #pragma fragment DepthNormalsFrag
-
-			#pragma shader_feature_local __ _MK_DISSOLVE_DEFAULT _MK_DISSOLVE_BORDER_COLOR _MK_DISSOLVE_BORDER_RAMP
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_STUTTER
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_SINE _MK_VERTEX_ANIMATION_PULSE _MK_VERTEX_ANIMATION_NOISE
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_MAP
-            #pragma shader_feature_local __ _MK_ALBEDO_MAP
-            #pragma shader_feature_local __ _MK_ALPHA_CLIPPING
-
-            #pragma multi_compile_instancing
-			#pragma multi_compile __ DOTS_INSTANCING_ON
-
-			#define MK_URP
-			#define MK_SIMPLE
-			#define MK_STANDARD
-
-            #include "../../Lib/DepthNormals/Setup.hlsl"
             ENDHLSL
         }
 
@@ -323,7 +286,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" }
+			Tags { "LightMode" = "UniversalForward" }
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -346,11 +309,11 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#pragma vertex ForwardVert
 			#pragma fragment ForwardFrag
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
             #pragma multi_compile_fog
 			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
 
 			#define MK_URP
 			#define MK_UNLIT
@@ -389,6 +352,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#pragma fragment MetaFrag
 			#pragma fragmentoption ARB_precision_hint_fastest
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma shader_feature_local __ _MK_ALBEDO_MAP
@@ -439,43 +403,6 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#define MK_STANDARD
 
             #include "../../Lib/DepthOnly/Setup.hlsl"
-            ENDHLSL
-        }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////
-		// Depth Normals
-		/////////////////////////////////////////////////////////////////////////////////////////////
-		Pass
-        {
-            Name "DepthNormals"
-            Tags { "LightMode" = "DepthNormals" }
-
-            ZWrite On
-            Cull [_RenderFace]
-
-            HLSLPROGRAM
-
-            #pragma prefer_hlslcc gles
-            #pragma exclude_renderers d3d11_9x
-            #pragma target 3.5
-
-            #pragma vertex DepthNormalsVert
-            #pragma fragment DepthNormalsFrag
-
-			#pragma shader_feature_local __ _MK_DISSOLVE_DEFAULT _MK_DISSOLVE_BORDER_COLOR _MK_DISSOLVE_BORDER_RAMP
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_STUTTER
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_SINE _MK_VERTEX_ANIMATION_PULSE _MK_VERTEX_ANIMATION_NOISE
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_MAP
-            #pragma shader_feature_local __ _MK_ALBEDO_MAP
-            #pragma shader_feature_local __ _MK_ALPHA_CLIPPING
-
-            #pragma multi_compile_instancing
-
-			#define MK_URP
-			#define MK_SIMPLE
-			#define MK_STANDARD
-
-            #include "../../Lib/DepthNormals/Setup.hlsl"
             ENDHLSL
         }
 
@@ -542,7 +469,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" }
+			Tags { "LightMode" = "UniversalForward" }
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -564,11 +491,11 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#pragma vertex ForwardVert
 			#pragma fragment ForwardFrag
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
             #pragma multi_compile_fog
 			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
 
 			#define MK_URP
 			#define MK_UNLIT
@@ -607,6 +534,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#pragma fragment MetaFrag
 			#pragma fragmentoption ARB_precision_hint_fastest
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma shader_feature_local __ _MK_ALBEDO_MAP
@@ -657,43 +585,6 @@ Shader "MK/Toon/URP/Standard/Unlit"
 			#define MK_STANDARD
 
             #include "../../Lib/DepthOnly/Setup.hlsl"
-            ENDHLSL
-        }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////
-		// Depth Normals
-		/////////////////////////////////////////////////////////////////////////////////////////////
-		Pass
-        {
-            Name "DepthNormals"
-            Tags { "LightMode" = "DepthNormals" }
-
-            ZWrite On
-            Cull [_RenderFace]
-
-            HLSLPROGRAM
-
-            #pragma prefer_hlslcc gles
-            #pragma exclude_renderers d3d11_9x
-            #pragma target 2.5
-
-            #pragma vertex DepthNormalsVert
-            #pragma fragment DepthNormalsFrag
-
-			#pragma shader_feature_local __ _MK_DISSOLVE_DEFAULT _MK_DISSOLVE_BORDER_COLOR _MK_DISSOLVE_BORDER_RAMP
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_STUTTER
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_SINE _MK_VERTEX_ANIMATION_PULSE _MK_VERTEX_ANIMATION_NOISE
-			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_MAP
-            #pragma shader_feature_local __ _MK_ALBEDO_MAP
-            #pragma shader_feature_local __ _MK_ALPHA_CLIPPING
-
-            #pragma multi_compile_instancing
-
-			#define MK_URP
-			#define MK_SIMPLE
-			#define MK_STANDARD
-
-            #include "../../Lib/DepthNormals/Setup.hlsl"
             ENDHLSL
         }
 

@@ -93,9 +93,6 @@ Shader "MK/Toon/URP/Particles/Unlit"
 		[HideInInspector] _Cutoff ("", Range(0, 1)) = 0.5
 		[HideInInspector] _MainTex ("", 2D) = "white" {}
 	}
-	HLSLINCLUDE
-    	#pragma never_use_dxc
-    ENDHLSL
 	SubShader
 	{
 		Tags {"RenderType"="Opaque" "PerformanceChecks"="False" "IgnoreProjector" = "True" "PreviewType" = "Plane" "RenderPipeline" = "UniversalPipeline" }
@@ -116,7 +113,7 @@ Shader "MK/Toon/URP/Particles/Unlit"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" } 
+			Tags { "LightMode" = "UniversalForward" } 
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -145,10 +142,8 @@ Shader "MK/Toon/URP/Particles/Unlit"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
-
-			#pragma multi_compile_instancing
-            #pragma instancing_options procedural:ParticleInstancingSetup
 
 			#define MK_URP
 			#define MK_PARTICLES
@@ -243,7 +238,7 @@ Shader "MK/Toon/URP/Particles/Unlit"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" } 
+			Tags { "LightMode" = "UniversalForward" } 
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -272,10 +267,8 @@ Shader "MK/Toon/URP/Particles/Unlit"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
-
-			#pragma multi_compile_instancing
-            #pragma instancing_options procedural:ParticleInstancingSetup
 
 			#define MK_URP
 			#define MK_PARTICLES
@@ -370,7 +363,7 @@ Shader "MK/Toon/URP/Particles/Unlit"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" } 
+			Tags { "LightMode" = "UniversalForward" } 
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -398,10 +391,8 @@ Shader "MK/Toon/URP/Particles/Unlit"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
-
-			#pragma multi_compile_instancing
-            #pragma instancing_options procedural:ParticleInstancingSetup
 
 			#define MK_URP
 			#define MK_PARTICLES

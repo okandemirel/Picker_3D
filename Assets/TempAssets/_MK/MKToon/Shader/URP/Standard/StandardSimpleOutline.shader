@@ -145,10 +145,6 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 		/////////////////
 		[HideInInspector] _Cutoff ("", Range(0, 1)) = 0.5
 		[HideInInspector] _MainTex ("", 2D) = "white" {}
-
-		[HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
-        [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
-        [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
 	}
 	SubShader
 	{
@@ -170,7 +166,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" }
+			Tags { "LightMode" = "UniversalForward" }
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -203,24 +199,18 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma shader_feature_local __ _MK_GOOCH_RAMP
 			#pragma shader_feature_local __ _MK_WRAPPED_DIFFUSE
 
-			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile __ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            #pragma multi_compile_fragment __ _ADDITIONAL_LIGHT_SHADOWS
-            #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile __ _ADDITIONAL_LIGHT_SHADOWS
+            #pragma multi_compile __ _SHADOWS_SOFT
 			#pragma shader_feature __ _MK_RECEIVE_SHADOWS
             #pragma multi_compile __ LIGHTMAP_SHADOW_MIXING
             
 			#pragma multi_compile __ SHADOWS_SHADOWMASK
-            #pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
-            #pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BLENDING
-            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BOX_PROJECTION
-            #pragma multi_compile_fragment _ _LIGHT_LAYERS
-            #pragma multi_compile_fragment _ _LIGHT_COOKIES
-            #pragma multi_compile _ _CLUSTERED_RENDERING
+            #pragma multi_compile __ _SCREEN_SPACE_OCCLUSION
             #pragma multi_compile __ DIRLIGHTMAP_COMBINED
             #pragma multi_compile __ LIGHTMAP_ON
-			#pragma multi_compile _ DYNAMICLIGHTMAP_ON
 
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#pragma vertex ForwardVert
@@ -228,10 +218,10 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
 			#pragma multi_compile __ DOTS_INSTANCING_ON
 
 			#define MK_URP
@@ -277,6 +267,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma vertex ShadowCasterVert
 			#pragma fragment ShadowCasterFrag
 			
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_instancing
@@ -307,6 +298,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma fragment MetaFrag
 			#pragma fragmentoption ARB_precision_hint_fastest
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma shader_feature __ _MK_EMISSION
@@ -365,6 +357,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_MAP
 			#pragma shader_feature_local __ _MK_DISSOLVE_DEFAULT _MK_DISSOLVE_BORDER_COLOR _MK_DISSOLVE_BORDER_RAMP
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_fog
@@ -518,7 +511,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" }
+			Tags { "LightMode" = "UniversalForward" }
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -551,24 +544,18 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma shader_feature_local __ _MK_GOOCH_RAMP
 			#pragma shader_feature_local __ _MK_WRAPPED_DIFFUSE
 
-			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile __ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            #pragma multi_compile_fragment __ _ADDITIONAL_LIGHT_SHADOWS
-            #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile __ _ADDITIONAL_LIGHT_SHADOWS
+            #pragma multi_compile __ _SHADOWS_SOFT
 			#pragma shader_feature __ _MK_RECEIVE_SHADOWS
             #pragma multi_compile __ LIGHTMAP_SHADOW_MIXING
             
 			#pragma multi_compile __ SHADOWS_SHADOWMASK
-            #pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
-            #pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BLENDING
-            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BOX_PROJECTION
-            #pragma multi_compile_fragment _ _LIGHT_LAYERS
-            #pragma multi_compile_fragment _ _LIGHT_COOKIES
-            #pragma multi_compile _ _CLUSTERED_RENDERING
+            #pragma multi_compile __ _SCREEN_SPACE_OCCLUSION
             #pragma multi_compile __ DIRLIGHTMAP_COMBINED
             #pragma multi_compile __ LIGHTMAP_ON
-			#pragma multi_compile _ DYNAMICLIGHTMAP_ON
 
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#pragma vertex ForwardVert
@@ -576,10 +563,10 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
 
 			#define MK_URP
 			#define MK_SIMPLE
@@ -624,6 +611,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma vertex ShadowCasterVert
 			#pragma fragment ShadowCasterFrag
 			
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_instancing
@@ -653,6 +641,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma fragment MetaFrag
 			#pragma fragmentoption ARB_precision_hint_fastest
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma shader_feature __ _MK_EMISSION
@@ -711,6 +700,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_MAP
 			#pragma shader_feature_local __ _MK_DISSOLVE_DEFAULT _MK_DISSOLVE_BORDER_COLOR _MK_DISSOLVE_BORDER_RAMP
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_fog
@@ -861,7 +851,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" }
+			Tags { "LightMode" = "UniversalForward" }
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -893,24 +883,18 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma shader_feature_local __ _MK_GOOCH_RAMP
 			#pragma shader_feature_local __ _MK_WRAPPED_DIFFUSE
 
-			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile __ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            #pragma multi_compile_fragment __ _ADDITIONAL_LIGHT_SHADOWS
-            #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile __ _ADDITIONAL_LIGHT_SHADOWS
+            #pragma multi_compile __ _SHADOWS_SOFT
 			#pragma shader_feature __ _MK_RECEIVE_SHADOWS
             #pragma multi_compile __ LIGHTMAP_SHADOW_MIXING
             
 			#pragma multi_compile __ SHADOWS_SHADOWMASK
-            #pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
-            #pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BLENDING
-            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BOX_PROJECTION
-            #pragma multi_compile_fragment _ _LIGHT_LAYERS
-            #pragma multi_compile_fragment _ _LIGHT_COOKIES
-            #pragma multi_compile _ _CLUSTERED_RENDERING
+            #pragma multi_compile __ _SCREEN_SPACE_OCCLUSION
             #pragma multi_compile __ DIRLIGHTMAP_COMBINED
             #pragma multi_compile __ LIGHTMAP_ON
-			#pragma multi_compile _ DYNAMICLIGHTMAP_ON
 
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#pragma vertex ForwardVert
@@ -918,10 +902,10 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
 
 			#define MK_URP
 			#define MK_SIMPLE
@@ -966,6 +950,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma vertex ShadowCasterVert
 			#pragma fragment ShadowCasterFrag
 			
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_instancing
@@ -995,6 +980,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma fragment MetaFrag
 			#pragma fragmentoption ARB_precision_hint_fastest
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma shader_feature __ _MK_EMISSION
@@ -1053,6 +1039,7 @@ Shader "MK/Toon/URP/Standard/Simple + Outline"
 			#pragma shader_feature_local __ _MK_VERTEX_ANIMATION_MAP
 			#pragma shader_feature_local __ _MK_DISSOLVE_DEFAULT _MK_DISSOLVE_BORDER_COLOR _MK_DISSOLVE_BORDER_RAMP
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
 
 			#pragma multi_compile_fog

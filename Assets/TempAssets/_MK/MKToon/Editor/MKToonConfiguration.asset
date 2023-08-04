@@ -16,17 +16,26 @@ MonoBehaviour:
   showInstallerOnReload: 0
   _titleImage: {fileID: 2800000, guid: c79fa54689197e04caa35ef524d4c035, type: 3}
   _readMe: {fileID: 102900000, guid: ad1cc8c198011f44f9827e2f9dfc2f82, type: 3}
-  _basePackageBuiltin: {fileID: 102900000, guid: feb819dbe0310c5489ab8aa2b2243132, type: 3}
+  _basePackageBuiltin: {fileID: 102900000, guid: feb819dbe0310c5489ab8aa2b2243132,
+    type: 3}
   _basePackageLWRP: {fileID: 102900000, guid: c4c60713c0067324ca940e6872cc20f9, type: 3}
   _EditorURP: {fileID: 102900000, guid: 6f5fa022fe3a7e1429bc1770260201c6, type: 3}
-  _basePackageURP_2019_X: {fileID: 102900000, guid: 9d8954df88323bc40b301cebdc52dd03, type: 3}
-  _basePackageURP_2020_1: {fileID: 102900000, guid: 1cf3e1536ee4fc9428e1a6f95a255cef, type: 3}
-  _basePackageURP_2020_2_Or_Newer: {fileID: 102900000, guid: 2e28e791b3ff16245afd7ff15b207ca0, type: 3}
-  _basePackageURP_2021_1: {fileID: 102900000, guid: f62d266717fcf104ca8aebcdeea03197, type: 3}
-  _basePackageURP_2021_2_Or_Newer: {fileID: 102900000, guid: e11f27729977e1e40b9d86adad61ad04, type: 3}
-  _examplesPackageInc: {fileID: 102900000, guid: 783dfb7493ba3be4ba9a65c626ec2b00, type: 3}
-  _examplesPackageBuiltin: {fileID: 102900000, guid: bda7aefb5fedd2d49be1274e3cb409e7, type: 3}
-  _examplesPackageURP: {fileID: 102900000, guid: a258dff0e58b3a147b1f5e9f6a4ee278, type: 3}
+  _basePackageURP_2019_X: {fileID: 102900000, guid: 9d8954df88323bc40b301cebdc52dd03,
+    type: 3}
+  _basePackageURP_2020_1: {fileID: 102900000, guid: 1cf3e1536ee4fc9428e1a6f95a255cef,
+    type: 3}
+  _basePackageURP_2020_2_Or_Newer: {fileID: 102900000, guid: 2e28e791b3ff16245afd7ff15b207ca0,
+    type: 3}
+  _basePackageURP_2021_1: {fileID: 102900000, guid: f62d266717fcf104ca8aebcdeea03197,
+    type: 3}
+  _basePackageURP_2021_2_Or_Newer: {fileID: 102900000, guid: e11f27729977e1e40b9d86adad61ad04,
+    type: 3}
+  _examplesPackageInc: {fileID: 102900000, guid: 783dfb7493ba3be4ba9a65c626ec2b00,
+    type: 3}
+  _examplesPackageBuiltin: {fileID: 102900000, guid: bda7aefb5fedd2d49be1274e3cb409e7,
+    type: 3}
+  _examplesPackageURP: {fileID: 102900000, guid: a258dff0e58b3a147b1f5e9f6a4ee278,
+    type: 3}
   _examples:
   - name: Artistic
     scene: {fileID: 102900000, guid: 330667252edb66142bb436baab455037, type: 3}

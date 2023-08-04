@@ -156,9 +156,6 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 		[HideInInspector] _Cutoff ("", Range(0, 1)) = 0.5
 		[HideInInspector] _MainTex ("", 2D) = "white" {}
 	}
-	HLSLINCLUDE
-    	#pragma never_use_dxc
-    ENDHLSL
 	SubShader
 	{
 		Tags {"RenderType"="Transparent" "PerformanceChecks"="False" "IgnoreProjector" = "True" "PreviewType" = "Plane" "RenderPipeline" = "UniversalPipeline" }
@@ -179,7 +176,7 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" } 
+			Tags { "LightMode" = "UniversalForward" } 
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -219,10 +216,11 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 			#pragma shader_feature_local __ _MK_REFRACTION_DISTORTION_MAP
 			#pragma shader_feature_local __ _MK_INDEX_OF_REFRACTION
 
-			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile __ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            #pragma multi_compile_fragment __ _ADDITIONAL_LIGHT_SHADOWS
-            #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile __ _ADDITIONAL_LIGHT_SHADOWS
+            #pragma multi_compile __ _SHADOWS_SOFT
 			#pragma shader_feature __ _MK_RECEIVE_SHADOWS
             #pragma multi_compile __ LIGHTMAP_SHADOW_MIXING
             
@@ -236,10 +234,8 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
-
-			#pragma multi_compile_instancing
-            #pragma instancing_options procedural:ParticleInstancingSetup
 
 			#define MK_URP
 			#define MK_REFRACTION
@@ -335,7 +331,7 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" } 
+			Tags { "LightMode" = "UniversalForward" } 
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -375,10 +371,11 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 			#pragma shader_feature_local __ _MK_REFRACTION_DISTORTION_MAP
 			#pragma shader_feature_local __ _MK_INDEX_OF_REFRACTION
 
-			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile __ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            #pragma multi_compile_fragment __ _ADDITIONAL_LIGHT_SHADOWS
-            #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile __ _ADDITIONAL_LIGHT_SHADOWS
+            #pragma multi_compile __ _SHADOWS_SOFT
 			#pragma shader_feature __ _MK_RECEIVE_SHADOWS
             #pragma multi_compile __ LIGHTMAP_SHADOW_MIXING
             
@@ -392,10 +389,8 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
-
-			#pragma multi_compile_instancing
-            #pragma instancing_options procedural:ParticleInstancingSetup
 
 			#define MK_URP
 			#define MK_REFRACTION
@@ -491,7 +486,7 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForwardOnly" } 
+			Tags { "LightMode" = "UniversalForward" } 
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]
@@ -529,10 +524,11 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 			#pragma shader_feature_local __ _MK_REFRACTION_DISTORTION_MAP
 			#pragma shader_feature_local __ _MK_INDEX_OF_REFRACTION
 
-			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile __ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile __ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            #pragma multi_compile_fragment __ _ADDITIONAL_LIGHT_SHADOWS
-            #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile __ _ADDITIONAL_LIGHT_SHADOWS
+            #pragma multi_compile __ _SHADOWS_SOFT
 			#pragma shader_feature __ _MK_RECEIVE_SHADOWS
             #pragma multi_compile __ LIGHTMAP_SHADOW_MIXING
             
@@ -546,10 +542,8 @@ Shader "MK/Toon/URP/Particles/Simple + Refraction"
 
 			#pragma multi_compile_fog
 
+			#pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
-
-			#pragma multi_compile_instancing
-            #pragma instancing_options procedural:ParticleInstancingSetup
 
 			#define MK_URP
 			#define MK_REFRACTION

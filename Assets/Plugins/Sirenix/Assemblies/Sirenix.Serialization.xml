@@ -6094,8 +6094,6 @@
         <member name="M:Sirenix.Serialization.SerializationUtility.CreateCopy(System.Object)">
             <summary>
             Creates a deep copy of an object. Returns null if null. All Unity objects references will remain the same - they will not get copied.
-            Similarly, strings are not copied, nor are reflection types such as System.Type, or types derived from System.Reflection.MemberInfo,
-            System.Reflection.Assembly or System.Reflection.Module.
             </summary>
         </member>
         <member name="T:Sirenix.Serialization.TwoWaySerializationBinder">

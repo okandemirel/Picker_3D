@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170d7dfff8f8b5d4f896093fda406b68, type: 3}
+  m_Name: CD_Level
+  m_EditorClassIdentifier: 
+  Levels:
+  - PoolList:
+    - RequiredObjectCount: 10
+    - RequiredObjectCount: 20
+    - RequiredObjectCount: 30
+  - PoolList:
+    - RequiredObjectCount: 12
+    - RequiredObjectCount: 22
+    - RequiredObjectCount: 28
+  - PoolList:
+    - RequiredObjectCount: 14
+    - RequiredObjectCount: 24
+    - RequiredObjectCount: 36
+  - PoolList:
+    - RequiredObjectCount: 16
+    - RequiredObjectCount: 30
+    - RequiredObjectCount: 42

@@ -1,6 +1,6 @@
-using Runtime.Enums;
+﻿using Cinemachine;
 using Runtime.Signals;
-using Signals;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Runtime.Managers
@@ -11,13 +11,27 @@ namespace Runtime.Managers
 
         #region Serialized Variables
 
-        [SerializeField] private Animator animator;
+        [SerializeField] private CinemachineVirtualCamera virtualCamera;
+
+        #endregion
+
+        #region Private Variables
+
+        private float3 _firstPosition;
 
         #endregion
 
         #endregion
 
-        #region Event Subscriptions
+        private void Start()
+        {
+            Init();
+        }
+
+        private void Init()
+        {
+            _firstPosition = transform.position;
+        }
 
         private void OnEnable()
         {
@@ -26,31 +40,31 @@ namespace Runtime.Managers
 
         private void SubscribeEvents()
         {
+            CameraSignals.Instance.onSetCameraTarget += OnSetCameraTarget;
             CoreGameSignals.Instance.onReset += OnReset;
-            CameraSignals.Instance.onChangeCameraState += OnChangeCameraState;
         }
 
-        private void UnsubscribeEvents()
+        private void OnSetCameraTarget()
         {
-            CoreGameSignals.Instance.onReset -= OnReset;
-            CameraSignals.Instance.onChangeCameraState -= OnChangeCameraState;
-        }
-
-        private void OnDisable()
-        {
-            UnsubscribeEvents();
-        }
-
-        #endregion
-
-        private void OnChangeCameraState(CameraStates state)
-        {
-            animator.SetTrigger(state.ToString());
+            var player = FindObjectOfType<PlayerManager>().transform;
+            virtualCamera.Follow = player;
+            //virtualCamera.LookAt = player;
         }
 
         private void OnReset()
         {
-            CameraSignals.Instance.onChangeCameraState?.Invoke(CameraStates.Idle);
+            transform.position = _firstPosition;
+        }
+
+        private void UnSubscribeEvents()
+        {
+            CameraSignals.Instance.onSetCameraTarget -= OnSetCameraTarget;
+            CoreGameSignals.Instance.onReset -= OnReset;
+        }
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
         }
     }
 }

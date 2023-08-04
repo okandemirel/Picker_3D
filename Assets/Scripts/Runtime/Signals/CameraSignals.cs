@@ -1,12 +1,10 @@
-using Extensions;
-using Runtime.Enums;
+using Runtime.Extensions;
 using UnityEngine.Events;
 
 namespace Runtime.Signals
 {
     public class CameraSignals : MonoSingleton<CameraSignals>
     {
-        public UnityAction<CameraStates> onChangeCameraState = delegate { };
-        public UnityAction onSetCinemachineTarget = delegate { };
+        public UnityAction onSetCameraTarget = delegate { };
     }
 }
