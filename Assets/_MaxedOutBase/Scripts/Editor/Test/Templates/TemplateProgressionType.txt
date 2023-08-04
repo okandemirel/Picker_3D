@@ -1,0 +1,7 @@
+﻿namespace Runtime.Enums
+{
+    public enum ProgressionType
+    {
+		//*ADDITION*//
+    }
+}

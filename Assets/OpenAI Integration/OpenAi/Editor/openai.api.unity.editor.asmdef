@@ -1,0 +1,17 @@
+{
+    "name": "openai.api.unity.editor",
+    "references": [
+        "GUID:762faf06f60fab647b9b71ae958fdf20"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

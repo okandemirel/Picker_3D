@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: d8c2aed1f3d6cb9478815209b544b682
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9609af7d379ab104abd0109916bc70d5, type: 3}
+  _prompt: 'This shader draws a circle based on the UV coordinates. The radius, the
+    foreground color, and the background color property can be modified via the properties. '
+  _cached: "\nShader \"Custom/CircleShader\" {\n    Properties {\n        _Radius
+    (\"Radius\", Range(0,1)) = 0.5\n        _ForegroundColor (\"Foreground Color\",
+    Color) = (1, 1, 1, 1)\n        _BackgroundColor (\"Background Color\", Color)
+    = (0, 0, 0, 1)\n    }\n    SubShader {\n        Tags {\"RenderType\"=\"Opaque\"}\n       
+    LOD 100\n\n        Pass {\n            CGPROGRAM\n            #pragma vertex
+    vert\n            #pragma fragment frag\n\n            // User-defined properties\n           
+    float _Radius;\n            float4 _ForegroundColor;\n            float4 _BackgroundColor;\n\n           
+    struct appdata {\n                float4 vertex : POSITION;\n               
+    float2 uv : TEXCOORD0;\n            };\n\n            struct v2f {\n               
+    float2 uv : TEXCOORD0;\n                float4 vertex : SV_POSITION;\n           
+    };\n\n            v2f vert (appdata v) {\n                v2f o;\n               
+    o.vertex = UnityObjectToClipPos(v.vertex);\n                o.uv = v.uv;\n               
+    return o;\n            }\n\n            fixed4 frag (v2f i) : SV_Target {\n               
+    float dist = distance(i.uv, float2(0.5, 0.5));\n                if (dist <= _Radius)
+    {\n                    return _ForegroundColor;\n                } else {\n                   
+    return _BackgroundColor;\n                }\n            }\n            ENDCG\n       
+    }\n    }\n    FallBack \"Diffuse\"\n}\n"

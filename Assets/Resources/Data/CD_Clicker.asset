@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f462c7965202d44639d9e9c6ea24ecde, type: 3}
+  m_Name: CD_Clicker
+  m_EditorClassIdentifier: 
+  Data:
+    MaxClickCombo: 5
+    ComboFadeDuration: 10
+    DefaultComboStartValue: 1
+    IncreaseRatio: 0.65
+    LerpDuration: 1.5
+    TimeScaleLimit: 3
